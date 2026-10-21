@@ -17,4 +17,11 @@ public class Piece : MonoBehaviour
     {
         
     }
+    
+    private void OnMouseDown()
+    {
+        //GetAvailableMoves();
+        Debug.Log("o touloumis einai gay!!");
+    }
+    
 }

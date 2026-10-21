@@ -485,7 +485,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24b6b57423676bb40b3cddfe541ccb8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
-  rookPiece: {fileID: 1655026964401295690, guid: 65f0bf23da7470d4eb48456c616f8c88, type: 3}
+  queenPiecePrefab: {fileID: 7029122913878345313, guid: f9bb65588a30cfa44ac8281ad03e5146, type: 3}
 --- !u!4 &2109347544
 Transform:
   m_ObjectHideFlags: 0

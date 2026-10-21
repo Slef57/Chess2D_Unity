@@ -1,21 +1,34 @@
+using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class GameManager : MonoBehaviour
 {
 
     private Piece[,] board = new Piece[8, 8];
 
-    public GameObject rookPiece;
+    public GameObject queenPiecePrefab;
     
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        Instantiate(rookPiece, new Vector3(3, 4, 0), Quaternion.identity);
+        SpawnSinglePiece(queenPiecePrefab, 4, 6);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void setupBoard()
     {
         
     }
+
+    private void SpawnSinglePiece(GameObject piecePrefab, int x, int y)
+    {
+        GameObject pieceGameObject = Instantiate(piecePrefab, new Vector3(x, y, 0), Quaternion.identity);
+
+        Piece piece = pieceGameObject.GetComponent<Piece>();
+
+        piece.posX = x;
+        piece.posY = y;
+
+        board[x, y] = piece;
+    }
+    
 }
