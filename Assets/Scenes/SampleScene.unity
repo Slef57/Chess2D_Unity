@@ -485,7 +485,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24b6b57423676bb40b3cddfe541ccb8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
-  queenPiecePrefab: {fileID: 7029122913878345313, guid: f9bb65588a30cfa44ac8281ad03e5146, type: 3}
+  whitePawnPrefab: {fileID: 9037213406929664740, guid: c649deaa764776c459e6fed62427a85c, type: 3}
+  whiteRookPrefab: {fileID: 1655026964401295690, guid: 65f0bf23da7470d4eb48456c616f8c88, type: 3}
+  whiteKnightPrefab: {fileID: 4576548082415973784, guid: 3b50df29be9bbd445a88ed74f8bc3e37, type: 3}
+  whiteBishopPrefab: {fileID: 9206597482845560061, guid: d0d7dd8af92720448b2a997d1f848b47, type: 3}
+  whiteQueenPrefab: {fileID: 7029122913878345313, guid: f9bb65588a30cfa44ac8281ad03e5146, type: 3}
+  whiteKingPrefab: {fileID: 7023350772635083512, guid: b578e109d75a82d4593786ad5bd2f048, type: 3}
+  blackPawnPrefab: {fileID: 869300465576550203, guid: 4bc2931ee0719384b878b15f35ee6096, type: 3}
+  blackRookPrefab: {fileID: 6851604280903106938, guid: 37c4ebc83dfb10142a4c364bef88866f, type: 3}
+  blackKnightPrefab: {fileID: 5391322764582653584, guid: bd098acccca4f0c458764ec47ad0288f, type: 3}
+  blackBishopPrefab: {fileID: 5343924426367253102, guid: 48013c4bc3b29f54e8dd84075d03ad84, type: 3}
+  blackQueenPrefab: {fileID: 1274389821225095464, guid: 2e528b91a841bcd4ab2aa2062202da7a, type: 3}
+  blackKingPrefab: {fileID: 3602862948295075175, guid: 2fed0680a08a3724ca30753dac7481da, type: 3}
 --- !u!4 &2109347544
 Transform:
   m_ObjectHideFlags: 0
