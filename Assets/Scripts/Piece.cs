@@ -10,7 +10,7 @@ public class Piece : MonoBehaviour
     // The colour of the pice ( black or white )
     public bool isWhite;
     
-    // True is the Piece has ever moved 
+    // True if the Piece has ever moved 
     public bool hasMoved = false;
 
     public virtual void GetAvailableMoves()
@@ -20,8 +20,11 @@ public class Piece : MonoBehaviour
     
     private void OnMouseDown()
     {
-        //GetAvailableMoves();
-        Debug.Log("o touloumis einai gay!!");
+
+        GameManager manager = FindAnyObjectByType<GameManager>();
+        
+        manager.SelectPiece(this);
+        
     }
     
 }
