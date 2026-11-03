@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Piece : MonoBehaviour
@@ -13,18 +14,15 @@ public class Piece : MonoBehaviour
     // True if the Piece has ever moved 
     public bool hasMoved = false;
 
-    public virtual void GetAvailableMoves()
+    public virtual List<Vector2Int> GetAvailableMoves(Piece[,] board)
     {
-        
+        return new List<Vector2Int>();
     }
     
     private void OnMouseDown()
     {
-
         GameManager manager = FindAnyObjectByType<GameManager>();
-        
         manager.SelectPiece(this);
-        
     }
     
 }

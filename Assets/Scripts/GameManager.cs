@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -5,6 +6,8 @@ public class GameManager : MonoBehaviour
     // 2D array holding the board's logical state
     private Piece[,] board = new Piece[8, 8];
 
+    public GameObject highlightPrefab;
+    
     // Piece prefabs
     [Header("White Pieces")] 
     public GameObject whitePawnPrefab;
@@ -24,6 +27,8 @@ public class GameManager : MonoBehaviour
 
     // THe piece currently selected by the player
     private Piece activePiece;
+    
+    
     
     void Start() {
         SetupBoard();
@@ -98,7 +103,23 @@ public class GameManager : MonoBehaviour
     public void SelectPiece(Piece clickedPiece)
     {
         activePiece = clickedPiece;
+        
+        HighlightSquare(activePiece.posX, activePiece.posY);
+        
+        List<Vector2Int> availableMoves = activePiece.GetAvailableMoves(board);
+
+        foreach (Vector2Int move in availableMoves)
+        {
+            HighlightSquare(move.x, move.y);
+        }
+        
         Debug.Log("Selected Piece is " + activePiece.gameObject.name);
+    }
+    
+    // Helper: Highlights a square
+    private void HighlightSquare(int x, int y)
+    {
+        Instantiate(highlightPrefab, new Vector3(x, y, 0), Quaternion.identity);
     }
     
 }

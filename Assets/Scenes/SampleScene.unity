@@ -485,6 +485,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24b6b57423676bb40b3cddfe541ccb8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
+  highlight: {fileID: 1944584344905863755, guid: 7576e5ab09543d94eb90b23d89595c93, type: 3}
   whitePawnPrefab: {fileID: 9037213406929664740, guid: c649deaa764776c459e6fed62427a85c, type: 3}
   whiteRookPrefab: {fileID: 1655026964401295690, guid: 65f0bf23da7470d4eb48456c616f8c88, type: 3}
   whiteKnightPrefab: {fileID: 4576548082415973784, guid: 3b50df29be9bbd445a88ed74f8bc3e37, type: 3}
