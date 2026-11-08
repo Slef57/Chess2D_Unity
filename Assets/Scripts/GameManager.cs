@@ -25,10 +25,11 @@ public class GameManager : MonoBehaviour
     public GameObject blackQueenPrefab;
     public GameObject blackKingPrefab;
 
-    // THe piece currently selected by the player
+    // The piece currently selected by the player
     private Piece activePiece;
     
-    
+    // All the active highlights
+    private List<GameObject> activeHighlights = new List<GameObject>();
     
     void Start() {
         SetupBoard();
@@ -46,16 +47,18 @@ public class GameManager : MonoBehaviour
         SpawnSinglePiece(whiteKingPrefab, 4, 0);
         SpawnSinglePiece(whiteBishopPrefab, 5, 0, 2);
         SpawnSinglePiece(whiteKnightPrefab, 6, 0 , 2);
-        SpawnSinglePiece(whiteRookPrefab, 7, 0, 2);
+        SpawnSinglePiece(whiteRookPrefab, 4, 3, 2); //set for testing ( should be x 7 y 0 )
         
-        // Spawn White Pawns ( Row 1 )
-        for (int i = 0; i < 8; i++)
+        SpawnSinglePiece(whitePawnPrefab, 2, 3); // for testing
+        
+        // Spawn White Pawns ( Row 1 ) ( now 1 less for testing)
+        for (int i = 0; i < 7; i++)
         {
             SpawnSinglePiece(whitePawnPrefab, i, 1, i+1);
         }
         
-        // Spawn Black Pawns ( Row 6 )
-        for (int i = 0; i < 8; i++)
+        // Spawn Black Pawns ( Row 6 ) ( now 1 less for testing)
+        for (int i = 0; i < 7; i++)
         {
             SpawnSinglePiece(blackPawnPrefab, i, 6, i+1);
         }
@@ -69,7 +72,6 @@ public class GameManager : MonoBehaviour
         SpawnSinglePiece(blackBishopPrefab, 5, 7, 2);
         SpawnSinglePiece(blackKnightPrefab, 6, 7, 2);
         SpawnSinglePiece(blackRookPrefab, 7, 7, 2);
-        
     }
 
     // Helper: Spawns a piece and registers it to the board array.
@@ -102,24 +104,42 @@ public class GameManager : MonoBehaviour
 
     public void SelectPiece(Piece clickedPiece)
     {
+        
+        // 1. Clear any existing highlights from a previous selection
+        ClearAllHighlights();
+        
+        // 2. Register the newly clicked piece
         activePiece = clickedPiece;
         
+        // 3. Highlight the square the piece is currently standing on
         HighlightSquare(activePiece.posX, activePiece.posY);
         
+        // 4. Retrieve all legal moves for this specific piece
         List<Vector2Int> availableMoves = activePiece.GetAvailableMoves(board);
 
+        // 5. Highlight every square the piece can legally move to
         foreach (Vector2Int move in availableMoves)
         {
             HighlightSquare(move.x, move.y);
         }
         
+        // 6. Log the selection to the console for debugging
         Debug.Log("Selected Piece is " + activePiece.gameObject.name);
     }
     
     // Helper: Highlights a square
     private void HighlightSquare(int x, int y)
     {
-        Instantiate(highlightPrefab, new Vector3(x, y, 0), Quaternion.identity);
+        activeHighlights.Add(Instantiate(highlightPrefab, new Vector3(x, y, 0), Quaternion.identity));
     }
     
+    // Helper: Clears all highlights
+    private void ClearAllHighlights()
+    {
+        foreach (GameObject highlight in activeHighlights)
+        {
+            Destroy(highlight);
+        }
+        activeHighlights.Clear();
+    }
 }
