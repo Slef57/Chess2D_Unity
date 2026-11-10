@@ -7,18 +7,16 @@ public class GameManager : MonoBehaviour
     private Piece[,] board = new Piece[8, 8];
 
     public GameObject highlightPrefab;
-    
+
     // Piece prefabs
-    [Header("White Pieces")] 
-    public GameObject whitePawnPrefab;
+    [Header("White Pieces")] public GameObject whitePawnPrefab;
     public GameObject whiteRookPrefab;
     public GameObject whiteKnightPrefab;
     public GameObject whiteBishopPrefab;
     public GameObject whiteQueenPrefab;
     public GameObject whiteKingPrefab;
 
-    [Header("Black Pieces")] 
-    public GameObject blackPawnPrefab;
+    [Header("Black Pieces")] public GameObject blackPawnPrefab;
     public GameObject blackRookPrefab;
     public GameObject blackKnightPrefab;
     public GameObject blackBishopPrefab;
@@ -27,18 +25,23 @@ public class GameManager : MonoBehaviour
 
     // The piece currently selected by the player
     private Piece activePiece;
-    
+
     // All the active highlights
     private List<GameObject> activeHighlights = new List<GameObject>();
-    
-    void Start() {
+
+    void Start()
+    {
+        // for testing
+        //SpawnSinglePiece(whiteKingPrefab, 3, 3);
+        //SpawnSinglePiece(blackPawnPrefab, 2, 3);
+        //SpawnSinglePiece(whitePawnPrefab, 4, 4);
+
         SetupBoard();
     }
 
     // Sets up the starting positions of all the pieces on the board
     private void SetupBoard()
     {
-        
         // Spawn White back Pieces ( Row 0 )
         SpawnSinglePiece(whiteRookPrefab, 0, 0, 1);
         SpawnSinglePiece(whiteKnightPrefab, 1, 0, 1);
@@ -46,23 +49,22 @@ public class GameManager : MonoBehaviour
         SpawnSinglePiece(whiteQueenPrefab, 3, 0);
         SpawnSinglePiece(whiteKingPrefab, 4, 0);
         SpawnSinglePiece(whiteBishopPrefab, 5, 0, 2);
-        SpawnSinglePiece(whiteKnightPrefab, 6, 0 , 2);
-        SpawnSinglePiece(whiteRookPrefab, 4, 3, 2); //set for testing ( should be x 7 y 0 )
-        
-        SpawnSinglePiece(whitePawnPrefab, 2, 3); // for testing
-        
-        // Spawn White Pawns ( Row 1 ) ( now 1 less for testing)
-        for (int i = 0; i < 7; i++)
+        SpawnSinglePiece(whiteKnightPrefab, 6, 0, 2);
+        SpawnSinglePiece(whiteRookPrefab, 7, 0, 2);
+
+
+        // Spawn White Pawns ( Row 1 )
+        for (int i = 0; i < 8; i++)
         {
-            SpawnSinglePiece(whitePawnPrefab, i, 1, i+1);
+            SpawnSinglePiece(whitePawnPrefab, i, 1, i + 1);
         }
-        
-        // Spawn Black Pawns ( Row 6 ) ( now 1 less for testing)
-        for (int i = 0; i < 7; i++)
+
+        // Spawn Black Pawns ( Row 6 )
+        for (int i = 0; i < 8; i++)
         {
-            SpawnSinglePiece(blackPawnPrefab, i, 6, i+1);
+            SpawnSinglePiece(blackPawnPrefab, i, 6, i + 1);
         }
-        
+
         // Spawn Black back Pieces ( Row 7 )
         SpawnSinglePiece(blackRookPrefab, 0, 7, 1);
         SpawnSinglePiece(blackKnightPrefab, 1, 7, 1);
@@ -80,7 +82,7 @@ public class GameManager : MonoBehaviour
         // 1. Spawn visual object.
         GameObject pieceGameObject = Instantiate(piecePrefab, new Vector3(x, y, 0), Quaternion.identity);
 
-        
+
         // 2. Setup name.
         string finalName = piecePrefab.name;
         if (pieceNo > 0)
@@ -89,8 +91,8 @@ public class GameManager : MonoBehaviour
         }
 
         pieceGameObject.name = finalName;
-        
-        
+
+
         // 3. Get the piece script.
         Piece piece = pieceGameObject.GetComponent<Piece>();
 
@@ -104,16 +106,15 @@ public class GameManager : MonoBehaviour
 
     public void SelectPiece(Piece clickedPiece)
     {
-        
         // 1. Clear any existing highlights from a previous selection
         ClearAllHighlights();
-        
+
         // 2. Register the newly clicked piece
         activePiece = clickedPiece;
-        
+
         // 3. Highlight the square the piece is currently standing on
         HighlightSquare(activePiece.posX, activePiece.posY);
-        
+
         // 4. Retrieve all legal moves for this specific piece
         List<Vector2Int> availableMoves = activePiece.GetAvailableMoves(board);
 
@@ -122,17 +123,17 @@ public class GameManager : MonoBehaviour
         {
             HighlightSquare(move.x, move.y);
         }
-        
+
         // 6. Log the selection to the console for debugging
         Debug.Log("Selected Piece is " + activePiece.gameObject.name);
     }
-    
+
     // Helper: Highlights a square
     private void HighlightSquare(int x, int y)
     {
         activeHighlights.Add(Instantiate(highlightPrefab, new Vector3(x, y, 0), Quaternion.identity));
     }
-    
+
     // Helper: Clears all highlights
     private void ClearAllHighlights()
     {
@@ -140,6 +141,7 @@ public class GameManager : MonoBehaviour
         {
             Destroy(highlight);
         }
+
         activeHighlights.Clear();
     }
 }
