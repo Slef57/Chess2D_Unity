@@ -32,11 +32,11 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         // for testing
-        //SpawnSinglePiece(whiteKingPrefab, 3, 3);
+        SpawnSinglePiece(whiteKingPrefab, 0, 0);
         //SpawnSinglePiece(blackPawnPrefab, 2, 3);
-        //SpawnSinglePiece(whitePawnPrefab, 4, 4);
+        SpawnSinglePiece(whitePawnPrefab, 1, 1);
 
-        SetupBoard();
+        //SetupBoard();
     }
 
     // Sets up the starting positions of all the pieces on the board
@@ -91,8 +91,7 @@ public class GameManager : MonoBehaviour
         }
 
         pieceGameObject.name = finalName;
-
-
+        
         // 3. Get the piece script.
         Piece piece = pieceGameObject.GetComponent<Piece>();
 
