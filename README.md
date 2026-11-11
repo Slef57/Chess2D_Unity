@@ -15,6 +15,7 @@ Assets/
         ├── Rook.cs
         ├── Bishop.cs
         └── Queen.cs
+```
 
 ## 🛠️ Code Structure
 
