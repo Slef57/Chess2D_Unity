@@ -32,9 +32,10 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         // for testing
-        SpawnSinglePiece(whiteKingPrefab, 0, 0);
+        SpawnSinglePiece(whiteKingPrefab, 1, 2);
+        SpawnSinglePiece(whiteQueenPrefab, 3, 2);
         //SpawnSinglePiece(blackPawnPrefab, 2, 3);
-        SpawnSinglePiece(whitePawnPrefab, 1, 1);
+        SpawnSinglePiece(blackPawnPrefab, 2, 1);
 
         //SetupBoard();
     }
