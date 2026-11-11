@@ -4,7 +4,7 @@ A 2D chess movement logic implementation in Unity (C#)
 
 ## 📁 Project Structure
 
-```
+
 Assets/
 └── Assets/
     └── Scripts/
