@@ -1,6 +1,6 @@
 # Unity 2D Chess System
 
-A 2D chess movement logic implementation in Unity (C#)
+A 2D chess implementation in Unity (C#)
 
 ## 📁 Project Structure
 
