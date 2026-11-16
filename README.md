@@ -1,6 +1,6 @@
 # Unity 2D Chess System
 
-A 2D chess movement logic implementation in Unity (C#)
+A 2D chess implementation in Unity (C#)
 
 ## 📁 Project Structure
 
@@ -38,4 +38,5 @@ The project strictly consists of the following core scripts:
   - Pawn Promotion logic upon reaching the opposite rank.
 - **Check & Checkmate Detection:** Validating move legality to prevent players from placing or leaving their King in check.
 - **Turn Management & UI:** Turn-based gameplay loop, piece highlighting for valid moves, and visual board UI integration.
-* **Customization & Themes:** Support for switching piece sprite sets (skins) and board themes dynamically.
+- **Customization & Themes:** Support for switching piece sprite sets (skins) and board themes dynamically.
+- **Single-Player Game:** Add a bot opponent for playing against the computer.
