@@ -13,11 +13,13 @@ public class Piece : MonoBehaviour
     // True if the Piece has ever moved 
     public bool hasMoved = false;
 
+    // Returns all moves available to this piece.
     public virtual List<Vector2Int> GetAvailableMoves(Piece[,] board)
     {
         return new List<Vector2Int>();
     }
 
+    // Called when the player clicks this piece.
     private void OnMouseDown()
     {
         GameManager manager = FindAnyObjectByType<GameManager>();

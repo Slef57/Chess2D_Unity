@@ -6,6 +6,8 @@ public class Pawn : Piece
     public override List<Vector2Int> GetAvailableMoves(Piece[,] board)
     {
         List<Vector2Int> availableMoves = new List<Vector2Int>();
+        
+        // set movement direction ( White pawns move up; black pawns move down ).
         int direction = 1;
 
         if (!isWhite)
@@ -15,6 +17,7 @@ public class Pawn : Piece
         
 
         // Up ( or "Down" for black pawns )
+        // A pawn can move forward only into an empty square.
         int targetX = posX;
         int targetY = posY + direction;
         if (targetY >= 0 && targetY <= 7)
@@ -26,7 +29,8 @@ public class Pawn : Piece
             }
         }
 
-        // 2 up
+        // Up 2 Squares
+        // A pawn can move two squares if it has not moved and the path is clear.
         targetX = posX;
         targetY = posY + 2 * direction;
         if (targetY >= 0 && targetY <= 7 && !hasMoved)
@@ -40,6 +44,7 @@ public class Pawn : Piece
         }
 
         // Up Right
+        // Pawns capture diagonally, not forward.
         targetX = posX + 1;
         targetY = posY + direction;
         if (targetX <= 7 && targetY >= 0 && targetY <= 7)
@@ -52,6 +57,7 @@ public class Pawn : Piece
         }
         
         // Up Left
+        // Pawns capture diagonally, not forward.
         targetX = posX - 1;
         targetY = posY + direction;
         if (targetX >= 0 && targetY >= 0 && targetY <= 7)

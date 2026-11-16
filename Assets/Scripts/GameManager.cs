@@ -36,6 +36,8 @@ public class GameManager : MonoBehaviour
     {
         if (testMode)
         {
+            // Test setup for individual piece movement.
+            
             //SpawnSinglePiece(whiteKingPrefab, 1, 2);
             //SpawnSinglePiece(whiteQueenPrefab, 3, 2);
             SpawnSinglePiece(blackPawnPrefab, 3, 0);
@@ -113,6 +115,7 @@ public class GameManager : MonoBehaviour
         board[x, y] = piece;
     }
 
+    // Retrieves and highlights all available moves.
     public void SelectPiece(Piece clickedPiece)
     {
         // 1. Clear any existing highlights from a previous selection
@@ -137,13 +140,13 @@ public class GameManager : MonoBehaviour
         Debug.Log("Selected Piece is " + activePiece.gameObject.name);
     }
 
-    // Helper: Highlights a square
+    // Helper: Highlights a a board position.
     private void HighlightSquare(int x, int y)
     {
         activeHighlights.Add(Instantiate(highlightPrefab, new Vector3(x, y, 0), Quaternion.identity));
     }
 
-    // Helper: Clears all highlights
+    // Helper: Removes all currently displayed highlights.
     private void ClearAllHighlights()
     {
         foreach (GameObject highlight in activeHighlights)

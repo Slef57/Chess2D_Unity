@@ -5,6 +5,12 @@ public class Knight : Piece
 {
     public override List<Vector2Int> GetAvailableMoves(Piece[,] board)
     {
-        return new List<Vector2Int>();
+        
+        List<Vector2Int> availableMoves = new List<Vector2Int>();
+        
+        
+        
+        return availableMoves;
+        
     }
 }
