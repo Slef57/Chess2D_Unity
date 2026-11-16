@@ -39,4 +39,4 @@ The project strictly consists of the following core scripts:
 - **Check & Checkmate Detection:** Validating move legality to prevent players from placing or leaving their King in check.
 - **Turn Management & UI:** Turn-based gameplay loop, piece highlighting for valid moves, and visual board UI integration.
 - **Single-Player Game:** Add a bot opponent for playing against the computer.
-* **Customization & Themes:** Support for switching piece sprite sets (skins) and board themes dynamically.
+- **Customization & Themes:** Support for switching piece sprite sets (skins) and board themes dynamically.
