@@ -4,7 +4,6 @@ A 2D chess implementation in Unity (C#)
 
 ## 📁 Project Structure
 
-
 Assets/
 └── Assets/
     └── Scripts/

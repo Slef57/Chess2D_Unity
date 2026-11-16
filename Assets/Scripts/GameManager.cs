@@ -3,6 +3,9 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+
+    [SerializeField] private bool testMode = true;
+    
     // 2D array holding the board's logical state
     private Piece[,] board = new Piece[8, 8];
 
@@ -31,13 +34,19 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        // for testing
-        SpawnSinglePiece(whiteKingPrefab, 1, 2);
-        SpawnSinglePiece(whiteQueenPrefab, 3, 2);
-        //SpawnSinglePiece(blackPawnPrefab, 2, 3);
-        SpawnSinglePiece(blackPawnPrefab, 2, 1);
-
-        //SetupBoard();
+        if (testMode)
+        {
+            //SpawnSinglePiece(whiteKingPrefab, 1, 2);
+            //SpawnSinglePiece(whiteQueenPrefab, 3, 2);
+            SpawnSinglePiece(blackPawnPrefab, 3, 0);
+            SpawnSinglePiece(blackPawnPrefab, 7, 3);
+            SpawnSinglePiece(blackPawnPrefab, 0, 3);
+            SpawnSinglePiece(blackPawnPrefab, 3, 7);
+        }
+        else
+        {
+            SetupBoard();
+        }
     }
 
     // Sets up the starting positions of all the pieces on the board
